@@ -1,4 +1,5 @@
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class CustomerCheck
@@ -47,6 +48,22 @@ public class CustomerCheck
     /** Calculates the final cost of this check, as described in part (c) */
     public double calculateCheck()
     {
-        if()
+        int numOfEntree = 0;
+        double finalCost = totalPrices();
+        for(MenuItem i: check)
+        {
+            if(i.isEntree() == true)
+            {
+                numOfEntree++;
+            }
+        }
+        if(numOfEntree >= 6)
+        {
+            finalCost += finalCost * 0.2;
+        }
+        if(couponApplies() == true){
+            finalCost -= finalCost * .25;
+        }
+        return finalCost;
     }
 }
