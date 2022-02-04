@@ -49,6 +49,8 @@ public class CustomerCheck
     public double calculateCheck()
     {
         int numOfEntree = 0;
+        double tip = 0;
+        double discount = 0;
         double finalCost = totalPrices();
         for(MenuItem i: check)
         {
@@ -59,11 +61,11 @@ public class CustomerCheck
         }
         if(numOfEntree >= 6)
         {
-            finalCost += finalCost * 0.2;
+            tip = finalCost * 0.2;
         }
         if(couponApplies() == true){
-            finalCost -= finalCost * .25;
+            discount = finalCost * .25;
         }
-        return finalCost;
+        return finalCost - discount + tip;
     }
 }
